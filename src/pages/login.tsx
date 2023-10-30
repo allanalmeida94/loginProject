@@ -22,12 +22,12 @@ export default function Login() {
             {/* Creating login form */}
             <FormControl
               border="1px"
-              borderColor="blue.600"
+              borderColor="red.600"
               borderRadius="25"
               padding="20px"
             >
               <FormLabel mt="6">Email address</FormLabel>
-              <Input type="email" placeholder="Type your e-mail" />
+              <Input type="text" placeholder="Type your name" />
               <FormHelperText>We'll never share your email.</FormHelperText>
               <FormLabel mt={5}>Password</FormLabel>
               <Input type="password" placeholder="Type your password" />
@@ -40,7 +40,7 @@ export default function Login() {
                 py="8"
                 mt="8"
                 mb="8"
-                colorScheme="facebook"
+                colorScheme="red"
                 fontSize="3xl"
                 boxShadow="dark-lg"
               >
