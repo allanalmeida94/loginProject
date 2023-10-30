@@ -6,11 +6,11 @@ import {
   Box,
   Button,
 } from "@chakra-ui/react";
+
 import { useRouter } from "next/router";
 
 export default function Home() {
   const router = useRouter();
-  //<NextAuthSessionProvider>{children}</NextAuthSessionProvider>;
 
   return (
     <>

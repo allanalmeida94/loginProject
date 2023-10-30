@@ -14,9 +14,9 @@ export const authOptions = {
         email: { label: "email", type: "text" },
         password: { label: "password", type: "password" },
       },
-      async authorize(credentials, req) {
+      authorize(credentials, req) {
         // Add logic here to look up the user from the credentials supplied
-        const user = { id: "1", email: "allan", password: "123456" };
+        const user = { id: "1", email: "allan@gmail.com", password: "123456" };
 
         if (
           credentials?.email.match(user.email) &&
