@@ -1,4 +1,3 @@
-"use client";
 import { SyntheticEvent, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -14,17 +13,20 @@ import {
   Button,
   Text,
 } from "@chakra-ui/react";
+import {GetServerSideProps, InferGetServerSidePropsType} from "next";
+import {getServerSession} from "next-auth";
+import {authOptions} from "@/pages/api/auth/[...nextauth]";
 
-export default function Login() {
+export default function Login({}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const router = useRouter();
 
-  function handleSubmit(event: SyntheticEvent) {
+  async function handleSubmit(event: SyntheticEvent) {
     event.preventDefault();
 
-    signIn("credentials", {
+    await signIn("credentials", {
       email,
       password,
       redirect: false,
@@ -94,4 +96,20 @@ export default function Login() {
       </div>
     </>
   );
+}
+
+// If user has a session, don't need to render the login page, just redirect to admin page.
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getServerSession(context.req, context.res, authOptions)
+
+  if(session) {
+    return {
+      redirect: {
+        destination: '/admin/page',
+        permanent: false
+      }
+    }
+  }
+
+  return {props: {}}
 }

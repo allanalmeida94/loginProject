@@ -1,7 +1,8 @@
-import NextAuth from "next-auth";
+import NextAuth, {NextAuthOptions} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
       // The name to display on the sign in form (e.g. "Sign in with...")
@@ -16,7 +17,7 @@ export const authOptions = {
       },
       authorize(credentials, req) {
         // Add logic here to look up the user from the credentials supplied
-        const user = { id: "1", email: "allan@gmail.com", password: "123456" };
+        const user = { id: "1", email: "allan@gmail.com", password: "123456", name: null, image: null };
 
         if (
           credentials?.email.match(user.email) &&
