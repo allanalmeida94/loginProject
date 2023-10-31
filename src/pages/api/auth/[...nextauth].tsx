@@ -17,7 +17,7 @@ export const authOptions: NextAuthOptions = {
       },
       authorize(credentials, req) {
         // Add logic here to look up the user from the credentials supplied
-        const user = { id: "1", email: "allan@gmail.com", password: "123456" };
+        const user = { id: "1", email: "allan@gmail.com", password: "123456", name: null, image: null };
 
         if (
           credentials?.email.match(user.email) &&
