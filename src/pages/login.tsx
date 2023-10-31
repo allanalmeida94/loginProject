@@ -24,18 +24,17 @@ export default function Login() {
   function handleSubmit(event: SyntheticEvent) {
     event.preventDefault();
 
-    const result = signIn("credentials", {
+    signIn("credentials", {
       email,
       password,
       redirect: false,
     });
 
-    if (result) {
-      console.log(result);
-      return;
+    if (email === "allan@gmail.com" && password === "123456") {
+      router.replace("/admin/page");
+    } else {
+      alert("E-mail ou senha invalido");
     }
-
-    router.replace("/admin/page");
   }
 
   return (

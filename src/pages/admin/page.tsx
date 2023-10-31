@@ -7,7 +7,6 @@ export default function Admin() {
         <Text fontSize="2xl" textAlign="center">
           Hello user, you are logged!
         </Text>
-        <Button ml="5">Click to exit</Button>
       </Center>
     </div>
   );
